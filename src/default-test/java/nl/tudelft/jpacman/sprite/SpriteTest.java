@@ -109,4 +109,5 @@ public class SpriteTest {
         Sprite split = sprite.split(10, 10, 64, 10);
         assertThat(split).isInstanceOf(EmptySprite.class);
     }
+
 }

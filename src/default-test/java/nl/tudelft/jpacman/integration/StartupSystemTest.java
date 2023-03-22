@@ -38,11 +38,11 @@ public class StartupSystemTest {
     @Test
     public void gameIsRunning() {
         launcher.launch();
-
         getGame().start();
-
         assertThat(getGame().isInProgress()).isTrue();
     }
+
+
 
 
     private Game getGame() {

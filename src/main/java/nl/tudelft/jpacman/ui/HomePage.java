@@ -12,6 +12,9 @@ public class HomePage extends JFrame {
     private JButton exitButton;
     private ThemeSelector themeSelector;
     private MapSelector mapSelector;
+    private JButton tutorialButton;
+
+    private Tutorial tutorialSelector;
 
     public void openTheme() {
         themeSelector = new ThemeSelector();
@@ -20,6 +23,11 @@ public class HomePage extends JFrame {
     private void openMap() {
         mapSelector = new MapSelector();
         mapSelector.setVisible(true);
+    }
+
+    public void openTutorial() {
+        tutorialSelector = new Tutorial();
+        tutorialSelector.setVisible(true);
     }
 
 
@@ -34,6 +42,10 @@ public class HomePage extends JFrame {
 
     public ThemeSelector getThemeSelector() {
         return themeSelector;
+    }
+
+    public JButton getTutorialButton() {
+        return tutorialButton;
     }
 
 
@@ -55,6 +67,10 @@ public class HomePage extends JFrame {
         ImageIcon themeIcon = new ImageIcon("src/main/resources/button/theme_btn.png");
         Image themeImg = themeIcon.getImage().getScaledInstance(200, 50, Image.SCALE_SMOOTH);
         ImageIcon themeBtn = new ImageIcon(themeImg);
+
+        ImageIcon tutorialIcon = new ImageIcon("src/main/resources/button/tutorial_btn.png");
+        Image tutorialImg = tutorialIcon.getImage().getScaledInstance(150, 100, Image.SCALE_SMOOTH);
+        ImageIcon tutorialBtn = new ImageIcon(tutorialImg);
 
         ImageIcon exitIcon = new ImageIcon("src/main/resources/button/exit_btn.png");
         Image exitImg = exitIcon.getImage().getScaledInstance(200, 50, Image.SCALE_SMOOTH);
@@ -90,6 +106,18 @@ public class HomePage extends JFrame {
             openTheme();
         });
 
+        tutorialButton = new JButton("");
+        tutorialButton.setIcon(tutorialBtn);
+        tutorialButton.setOpaque(false);
+        tutorialButton.setContentAreaFilled(false);
+        tutorialButton.setBorderPainted(false);
+        tutorialButton.setBorder(null);
+
+        tutorialButton.addActionListener(e -> {
+            this.setVisible(false);
+            openTutorial();
+        });
+
 
 
         exitButton = new JButton("");
@@ -104,7 +132,9 @@ public class HomePage extends JFrame {
 
         backgroundLabel.add(startButton, BorderLayout.CENTER);
         backgroundLabel.add(themeButton, BorderLayout.CENTER);
+        backgroundLabel.add(tutorialButton, BorderLayout.CENTER);
         backgroundLabel.add(exitButton, BorderLayout.CENTER);
+        tutorialButton.setBounds(440, 10, 150, 100);
         startButton.setBounds(200, 250, 200, 50);
         themeButton.setBounds(200, 350, 200, 50);
         exitButton.setBounds(200, 450, 200, 50);

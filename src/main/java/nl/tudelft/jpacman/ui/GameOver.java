@@ -3,80 +3,63 @@ package nl.tudelft.jpacman.ui;
 import nl.tudelft.jpacman.Launcher;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
 public class GameOver extends JFrame {
-    private static final int MENU_WIDTH = 800;
-    private static final int MENU_HEIGHT = 600;
-    private static final Color BACKGROUND_COLOR = new Color(0, 0, 0);
-    private static final Font TITLE_FONT = new Font("Press Start 2P", Font.BOLD, 30);
-    private static final Font BUTTON_FONT = new Font("Press Start 2P", Font.BOLD, 20);
+    private JButton restartButton;
+    private JButton exitButton;
 
     public GameOver() {
+
         // Set the title and size of the frame
-        setTitle("Game Over");
-        setSize(MENU_WIDTH, MENU_HEIGHT);
-        setResizable(false);
+        setTitle("Pacman");
+        setSize(600, 800);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        // Set the bounds of the frame
-        setBounds(100, 100, MENU_WIDTH, MENU_HEIGHT);
+        ImageIcon backgroundImage = new ImageIcon("src/main/resources/bg/Gameover.png");
+        Image image = backgroundImage.getImage().getScaledInstance(600, 800, Image.SCALE_SMOOTH);
+        ImageIcon realImg = new ImageIcon(image);
+        JLabel backgroundLabel = new JLabel(realImg);
 
-        // Set the background color
-        getContentPane().setBackground(BACKGROUND_COLOR);
+        ImageIcon exitIcon = new ImageIcon("src/main/resources/button/exit_btn.png");
+        Image exitImg = exitIcon.getImage().getScaledInstance(200, 50, Image.SCALE_SMOOTH);
+        ImageIcon exitBtn = new ImageIcon(exitImg);
 
-        // Add Pacman Game Over image
-        ImageIcon gameOverIcon = new ImageIcon("src/main/resources/bg/Gameover.png");
-        JLabel gameOverImage = new JLabel(gameOverIcon);
-        gameOverImage.setHorizontalAlignment(JLabel.CENTER);
-        getContentPane().add(gameOverImage, BorderLayout.CENTER);
+        ImageIcon restartIcon = new ImageIcon("src/main/resources/button/restart_btn.png");
+        Image restartImg = restartIcon.getImage().getScaledInstance(200, 50, Image.SCALE_SMOOTH);
+        ImageIcon restartBtn = new ImageIcon(restartImg);
 
-        // Add "Restart" and "Exit" buttons panel
-        JPanel buttonsPanel = new JPanel(new GridLayout(1, 2, 30, 0));
-        buttonsPanel.setOpaque(false);
-        getContentPane().add(buttonsPanel, BorderLayout.SOUTH);
-
-        // Add "Restart" button
-        JButton restartButton = new JButton(new ImageIcon("src/main/resources/button/restart_btn.png"));
-        restartButton.setBorderPainted(false);
+        restartButton = new JButton("");
+        restartButton.setIcon(restartBtn);
+        restartButton.setOpaque(false);
         restartButton.setContentAreaFilled(false);
-        restartButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // Code for restart button
-                dispose();
-                new MapSelector().setVisible(true);
+        restartButton.setBorderPainted(false);
+        restartButton.setBorder(null);
 
-            }
+        restartButton.addActionListener(e -> {
+            this.setVisible(false);
+            Launcher.dispose();
+            new MapSelector().setVisible(true);
         });
-        buttonsPanel.add(restartButton);
 
-        // Add "Exit" button
-        JButton  exitButton = new JButton(new ImageIcon("src/main/resources/button/exit_btn.png"));
-        exitButton.setBorderPainted(false);
+        exitButton = new JButton("");
+        exitButton.setIcon(exitBtn);
+        exitButton.setOpaque(false);
         exitButton.setContentAreaFilled(false);
-        exitButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // Code for exit button
-                System.exit(0);
-            }
+        exitButton.setBorderPainted(false);
+        exitButton.setBorder(null);
+        exitButton.addActionListener(e -> {
+            this.dispose();
         });
-        buttonsPanel.add(exitButton);
 
-        // Add message
-        JLabel messageLabel = new JLabel("You have died.");
-        messageLabel.setFont(TITLE_FONT);
-        messageLabel.setForeground(Color.YELLOW);
-        messageLabel.setHorizontalAlignment(JLabel.CENTER);
-        getContentPane().add(messageLabel, BorderLayout.NORTH);
+        backgroundLabel.add(restartButton, BorderLayout.CENTER);
+        backgroundLabel.add(exitButton, BorderLayout.CENTER);
+        restartButton.setBounds(50, 700, 200, 50);
+        exitButton.setBounds(350, 700, 200, 50);
+        backgroundLabel.setLayout(null);
+        add(backgroundLabel, BorderLayout.CENTER);
 
-        // Center the frame on the screen
-        setLocationRelativeTo(null);
-
-        // Make the frame visible
         setVisible(true);
+
     }
-
-
 
 }
