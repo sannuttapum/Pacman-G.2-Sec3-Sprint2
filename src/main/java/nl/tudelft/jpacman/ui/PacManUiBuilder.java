@@ -49,8 +49,12 @@ public class PacManUiBuilder {
      */
     private ScoreFormatter scoreFormatter = null;
 
+    public int level;
+
+
     /**
      * Creates a new Pac-Man UI builder without any mapped keys or buttons.
+     *
      */
     public PacManUiBuilder() {
         this.defaultButtons = false;
@@ -65,7 +69,7 @@ public class PacManUiBuilder {
      *            The game to build the UI for.
      * @return A new Pac-Man UI with the set keys and buttons.
      */
-    public PacManUI build(final Game game) {
+    public PacManUI build(final Game game,int level) {
         assert game != null;
 
         if (defaultButtons) {
@@ -184,4 +188,6 @@ public class PacManUiBuilder {
         this.scoreFormatter = scoreFormatter;
         return this;
     }
+
+
 }

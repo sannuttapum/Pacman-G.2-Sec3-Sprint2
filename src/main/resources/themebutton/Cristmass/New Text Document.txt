@@ -1,0 +1,4 @@
+startgame_btn
+restart_btn
+stop_btn
+exit_btn

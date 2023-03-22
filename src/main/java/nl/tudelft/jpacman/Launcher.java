@@ -20,6 +20,8 @@ import nl.tudelft.jpacman.sprite.PacManSprites;
 import nl.tudelft.jpacman.ui.*;
 import nl.tudelft.jpacman.ui.MapSelector;
 
+import static nl.tudelft.jpacman.ui.ThemeSelector.setTheme_;
+
 /**
  * Creates and launches the JPacMan UI.
  * 
@@ -39,6 +41,21 @@ public class Launcher {
     private PacManUI pacManThem1;
     private PacManUI pacManThem2;
     private PacManUI pacManThem3;
+
+    public static void setVisible(boolean b) {
+
+    }
+
+
+    public static int getTheme(){
+        return theme;
+    }
+    private static int theme;
+
+    public static int getMap(){
+        return map;
+    }
+    private static int map;
 
     /**
      * @return The game object this launcher will start when {@link #launch()}
@@ -188,13 +205,7 @@ public class Launcher {
     /**
      * Creates and starts a JPac-Man game.
      */
-    public void launch() {
-        makeGame();
-        PacManUiBuilder builder = new PacManUiBuilder().withDefaultButtons();
-        addSinglePlayerKeys(builder);
-        pacManUI = builder.build(getGame());
-        pacManUI.start();
-    }
+
 
     /**
      * Disposes of the UI. For more information see
@@ -202,7 +213,7 @@ public class Launcher {
      *
      * Precondition: The game was launched first.
      */
-    public void dispose() {
+    public static void dispose() {
         assert pacManUI != null;
         pacManUI.dispose();
     }
@@ -227,7 +238,7 @@ public class Launcher {
     }
 
 
-    private Level makeLevel_1() {
+    private Level makeLevel_0() {
         try {
             return getMapParser().parseMap("/board.txt");
         } catch (IOException e) {
@@ -235,44 +246,44 @@ public class Launcher {
                 "Unable to create level, name = " + "/board.txt", e);
         }
     }
-    private Level makeLevel_2() {
+    private Level makeLevel_1() {
         try {
             return getMapParser().parseMap("/board1.txt");
         } catch (IOException e) {
             throw new PacmanConfigurationException(
-                "Unable to create level, name = " + "/.txt", e);
+                "Unable to create level, name = " + "/board1.txt", e);
         }
     }
-    private Level makeLevel_3() {
+    private Level makeLevel_2() {
         try {
             return getMapParser().parseMap("/board2.txt");
         } catch (IOException e) {
             throw new PacmanConfigurationException(
-                "Unable to create level, name = " + "/.txt", e);
+                "Unable to create level, name = " + "/board2.txt", e);
         }
     }
-    private Level makeLevel_4() {
+    private Level makeLevel_3() {
         try {
             return getMapParser().parseMap("/board3.txt");
         } catch (IOException e) {
             throw new PacmanConfigurationException(
-                "Unable to create level, name = " + "/.txt", e);
+                "Unable to create level, name = " + "/board3.txt", e);
         }
     }
-    private Level makeLevel_5() {
+    private Level makeLevel_4() {
         try {
             return getMapParser().parseMap("/board4.txt");
         } catch (IOException e) {
             throw new PacmanConfigurationException(
-                "Unable to create level, name = " + "/.txt", e);
+                "Unable to create level, name = " + "/board4.txt", e);
         }
     }
-    private Level makeLevel_6() {
+    private Level makeLevel_5() {
         try {
             return getMapParser().parseMap("/board5.txt");
         } catch (IOException e) {
             throw new PacmanConfigurationException(
-                "Unable to create level, name = " + "/.txt", e);
+                "Unable to create level, name = " + "/board5.txt", e);
         }
     }
 
@@ -308,56 +319,153 @@ public class Launcher {
     }
     private Game makeTheme_6() {
         GameFactory gf = getGameFactory();
-        Level level = makeLevel_6();
+        Level level = makeLevel_5();
         game = gf.createSinglePlayerGame(level, loadPointCalculator());
         return game;
     }
 
+    /**Make Map**/
+    private Game makeMap_0() {
+        GameFactory gf = getGameFactory();
+        Level level = makeLevel_0();
+        game = gf.createSinglePlayerGame(level, loadPointCalculator());
+        return game;
+    }
+    private Game makeMap_1() {
+        GameFactory gf = getGameFactory();
+        Level level = makeLevel_1();
+        game = gf.createSinglePlayerGame(level, loadPointCalculator());
+        return game;
+    }
+
+    private Game makeMap_2() {
+        GameFactory gf = getGameFactory();
+        Level level = makeLevel_2();
+        game = gf.createSinglePlayerGame(level, loadPointCalculator());
+        return game;
+    }
+
+    private Game makeMap_3() {
+        GameFactory gf = getGameFactory();
+        Level level = makeLevel_3();
+        game = gf.createSinglePlayerGame(level, loadPointCalculator());
+        return game;
+    }
+
+    private Game makeMap_4() {
+        GameFactory gf = getGameFactory();
+        Level level = makeLevel_4();
+        game = gf.createSinglePlayerGame(level, loadPointCalculator());
+        return game;
+    }
+
+    private Game makeMap_5() {
+        GameFactory gf = getGameFactory();
+        Level level = makeLevel_5();
+        game = gf.createSinglePlayerGame(level, loadPointCalculator());
+        return game;
+    }
+
+    public void launch() {
+        makeGame();
+        PacManUiBuilder builder = new PacManUiBuilder().withDefaultButtons();
+        addSinglePlayerKeys(builder);
+        pacManUI = builder.build(getGame(),0);
+        pacManUI.start();
+    }
 
     public void launch_theme1() {
         makeTheme_1();
         PacManUiBuilder builder = new PacManUiBuilder().withDefaultButtons();
         addSinglePlayerKeys(builder);
-        pacManThem1 = builder.build(getGame());
-        pacManThem1.start();
+        pacManUI = builder.build(getGame(), 1);
+        setTheme_(1);
+        pacManUI.start();
     }
 
     public void launch_theme2() {
         makeTheme_2();
         PacManUiBuilder builder = new PacManUiBuilder().withDefaultButtons();
         addSinglePlayerKeys(builder);
-        pacManThem2 = builder.build(getGame());
-        pacManThem2.start();
+        pacManUI = builder.build(getGame(), 2);
+        setTheme_(2);
+        pacManUI.start();
     }
 
     public void launch_theme3() {
         makeTheme_3();
         PacManUiBuilder builder = new PacManUiBuilder().withDefaultButtons();
         addSinglePlayerKeys(builder);
-        pacManThem2 = builder.build(getGame());
-        pacManThem2.start();
+        pacManUI = builder.build(getGame(), 3);
+        setTheme_(3);
+        pacManUI.start();
     }
 
     public void launch_theme4() {
         makeTheme_4();
         PacManUiBuilder builder = new PacManUiBuilder().withDefaultButtons();
         addSinglePlayerKeys(builder);
-        pacManThem2 = builder.build(getGame());
-        pacManThem2.start();
+        pacManUI = builder.build(getGame(), 4);
+        setTheme_(4);
+        pacManUI.start();
     }
 
     public void launch_theme5() {
         makeTheme_5();
         PacManUiBuilder builder = new PacManUiBuilder().withDefaultButtons();
         addSinglePlayerKeys(builder);
-        pacManThem2 = builder.build(getGame());
-        pacManThem2.start();
+        pacManUI = builder.build(getGame(), 5);
+        setTheme_(5);
+        pacManUI.start();
     }
-    public void launch_theme6() {
-        makeTheme_6();
+
+    /**Launch Map**/
+
+    public void launch_map0(){
+        makeMap_0();
         PacManUiBuilder builder = new PacManUiBuilder().withDefaultButtons();
         addSinglePlayerKeys(builder);
-        pacManThem2 = builder.build(getGame());
-        pacManThem2.start();
+        pacManUI = builder.build(getGame(), 0);
+        pacManUI.start();
+    }
+
+    public void launch_map1(){
+        makeMap_1();
+        PacManUiBuilder builder = new PacManUiBuilder().withDefaultButtons();
+        addSinglePlayerKeys(builder);
+        pacManUI = builder.build(getGame(), 1);
+        pacManUI.start();
+    }
+
+    public void launch_map2(){
+        makeMap_2();
+        PacManUiBuilder builder = new PacManUiBuilder().withDefaultButtons();
+        addSinglePlayerKeys(builder);
+        pacManUI = builder.build(getGame(), 2);
+        pacManUI.start();
+    }
+
+    public void launch_map3(){
+        makeMap_3();
+        PacManUiBuilder builder = new PacManUiBuilder().withDefaultButtons();
+        addSinglePlayerKeys(builder);
+        pacManUI = builder.build(getGame(), 3);
+        pacManUI.start();
+    }
+
+    public void launch_map4(){
+        makeMap_4();
+        PacManUiBuilder builder = new PacManUiBuilder().withDefaultButtons();
+        addSinglePlayerKeys(builder);
+        pacManUI = builder.build(getGame(), 4);
+        pacManUI.start();
+    }
+
+    public void launch_map5(){
+        makeMap_5();
+        PacManUiBuilder builder = new PacManUiBuilder().withDefaultButtons();
+        addSinglePlayerKeys(builder);
+        pacManUI = builder.build(getGame(), 5);
+        pacManUI.start();
     }
 }

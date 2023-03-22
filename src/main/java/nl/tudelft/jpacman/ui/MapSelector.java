@@ -15,6 +15,7 @@ public class MapSelector extends JFrame {
     private JButton map5Button;
     private JButton backButton;
 
+
     public MapSelector(){
         setTitle("JPacman");
         setSize(600, 800);
@@ -64,7 +65,7 @@ public class MapSelector extends JFrame {
 
         mapBasicButton.addActionListener(e -> {
             this.setVisible(false);
-            new Launcher().launch_theme1();
+            new Launcher().launch_map0();
         });
         map1Button = new JButton("");
         map1Button.setIcon(map1Btn);
@@ -75,7 +76,7 @@ public class MapSelector extends JFrame {
 
         map1Button.addActionListener(e -> {
             this.setVisible(false);
-            new Launcher().launch_theme2();
+            new Launcher().launch_map1();
         });
         map2Button = new JButton("");
         map2Button.setIcon(map2Btn);
@@ -86,7 +87,7 @@ public class MapSelector extends JFrame {
 
         map2Button.addActionListener(e -> {
             this.setVisible(false);
-            new Launcher().launch_theme3();
+            new Launcher().launch_map2();
         });
         map3Button = new JButton("");
         map3Button.setIcon(mapBtn);
@@ -97,7 +98,7 @@ public class MapSelector extends JFrame {
 
         map3Button.addActionListener(e -> {
             this.setVisible(false);
-            new Launcher().launch_theme4();
+            new Launcher().launch_map3();
         });
         map4Button = new JButton("");
         map4Button.setIcon(map4Btn);
@@ -108,7 +109,7 @@ public class MapSelector extends JFrame {
 
         map4Button.addActionListener(e -> {
             this.setVisible(false);
-            new Launcher().launch_theme5();
+            new Launcher().launch_map4();
         });
         map5Button = new JButton("");
         map5Button.setIcon(map5Btn);
@@ -119,7 +120,7 @@ public class MapSelector extends JFrame {
 
         map5Button.addActionListener(e -> {
             this.setVisible(false);
-            new Launcher().launch_theme6();
+            new Launcher().launch_map5();
         });
         backButton = new JButton("");
         backButton.setIcon(backBtn);

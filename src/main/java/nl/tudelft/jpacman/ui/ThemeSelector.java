@@ -25,13 +25,14 @@ public class ThemeSelector extends JFrame {
     public static int getTheme_() {
         return theme_;
     }
+    public static void setTheme_(int theme_) {
+        ThemeSelector.theme_ = theme_;
+    }
     private void openMap() {
         mapSelector = new MapSelector();
         mapSelector.setVisible(true);
     }
-    public static void setTheme_(int theme_) {
-        ThemeSelector.theme_ = theme_;
-    }
+
 
     public ThemeSelector(){
         setTitle("JPacman");
@@ -42,23 +43,23 @@ public class ThemeSelector extends JFrame {
         Image image = backgroundImage.getImage().getScaledInstance(600, 770, Image.SCALE_SMOOTH);
 
         ImageIcon map1Icon = new ImageIcon("src/main/resources/theme/theme_1.png");
-        Image map1Img = map1Icon.getImage().getScaledInstance(370, 227, Image.SCALE_SMOOTH);
+        Image map1Img = map1Icon.getImage().getScaledInstance(370, 300, Image.SCALE_SMOOTH);
         ImageIcon theme1Btn = new ImageIcon(map1Img);
 
         ImageIcon map2Icon = new ImageIcon("src/main/resources/theme/theme_2.png");
-        Image map2Img = map2Icon.getImage().getScaledInstance(370, 227, Image.SCALE_SMOOTH);
+        Image map2Img = map2Icon.getImage().getScaledInstance(370, 300, Image.SCALE_SMOOTH);
         ImageIcon theme2Btn = new ImageIcon(map2Img);
 
         ImageIcon map3Icon = new ImageIcon("src/main/resources/theme/theme_3.png");
-        Image map3Img = map3Icon.getImage().getScaledInstance(370, 227, Image.SCALE_SMOOTH);
+        Image map3Img = map3Icon.getImage().getScaledInstance(370, 300, Image.SCALE_SMOOTH);
         ImageIcon theme3Btn = new ImageIcon(map3Img);
 
         ImageIcon map4Icon = new ImageIcon("src/main/resources/theme/theme_4.png");
-        Image map4Img = map4Icon.getImage().getScaledInstance(370, 227, Image.SCALE_SMOOTH);
+        Image map4Img = map4Icon.getImage().getScaledInstance(370, 300, Image.SCALE_SMOOTH);
         ImageIcon theme4Btn = new ImageIcon(map4Img);
 
         ImageIcon map5Icon = new ImageIcon("src/main/resources/theme/theme_5.png");
-        Image map5Img = map5Icon.getImage().getScaledInstance(370, 227, Image.SCALE_SMOOTH);
+        Image map5Img = map5Icon.getImage().getScaledInstance(370, 300, Image.SCALE_SMOOTH);
         ImageIcon theme5Btn = new ImageIcon(map5Img);
 
         ImageIcon realImg = new ImageIcon(image);

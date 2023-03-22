@@ -5,14 +5,17 @@ import java.util.Map;
 
 import javax.swing.*;
 import nl.tudelft.jpacman.Launcher;
+import nl.tudelft.jpacman.ui.ThemeSelector;
 
 
 /**
  * A panel containing a button for every registered action.
  *
- * @author Jeroen Roosen 
+ * @author Jeroen Roosen
  */
 class ButtonPanel extends JPanel {
+
+    ThemeSelector themeSelector;
 
     /**
      * Default serialisation ID.
@@ -30,23 +33,23 @@ class ButtonPanel extends JPanel {
         assert parent != null;
         setBackground(Color.BLACK);
 
-        ImageIcon startIcon = new ImageIcon("src/main/resources/button/startgame_btn.png");
+        ImageIcon startIcon = new ImageIcon("src/main/resources/button/startgameg_btn.png");
         Image startImg = startIcon.getImage().getScaledInstance(100, 25, Image.SCALE_SMOOTH);
         ImageIcon startBtn = new ImageIcon(startImg);
 
-        ImageIcon pauseIcon = new ImageIcon("src/main/resources/button/stop_btn.png");
+        ImageIcon pauseIcon = new ImageIcon("src/main/resources/button/stopg_btn.png");
         Image pauseImg = pauseIcon.getImage().getScaledInstance(100, 25, Image.SCALE_SMOOTH);
         ImageIcon pauseBtn = new ImageIcon(pauseImg);
 
         ImageIcon HomeIcon = new ImageIcon("src/main/resources/button/home_btn.png");
-        Image HomeImg = HomeIcon.getImage().getScaledInstance(75, 25, Image.SCALE_SMOOTH);
+        Image HomeImg = HomeIcon.getImage().getScaledInstance(75, 50, Image.SCALE_SMOOTH);
         ImageIcon HomeBtn = new ImageIcon(HomeImg);
 
-        ImageIcon RestartIcon = new ImageIcon("src/main/resources/button/restart_btn.png");
+        ImageIcon RestartIcon = new ImageIcon("src/main/resources/button/restartg_btn.png");
         Image RestartImg = RestartIcon.getImage().getScaledInstance(100, 25, Image.SCALE_SMOOTH);
         ImageIcon RestartBtn = new ImageIcon(RestartImg);
 
-        ImageIcon exitIcon = new ImageIcon("src/main/resources/button/exit_btn.png");
+        ImageIcon exitIcon = new ImageIcon("src/main/resources/button/exitg_btn.png");
         Image exitImg = exitIcon.getImage().getScaledInstance(100, 25, Image.SCALE_SMOOTH);
         ImageIcon exitBtn = new ImageIcon(exitImg);
 

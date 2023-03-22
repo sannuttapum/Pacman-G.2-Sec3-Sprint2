@@ -8,9 +8,9 @@ import nl.tudelft.jpacman.level.Level;
 import nl.tudelft.jpacman.level.Level.LevelObserver;
 import nl.tudelft.jpacman.level.Player;
 import nl.tudelft.jpacman.points.PointCalculator;
-import nl.tudelft.jpacman.ui.GameOver;
-import nl.tudelft.jpacman.ui.HomePage;
-import nl.tudelft.jpacman.ui.ThemeSelector;
+import nl.tudelft.jpacman.ui.*;
+
+import static nl.tudelft.jpacman.Launcher.pacManUI;
 
 /**
  * A basic implementation of a Pac-Man game.
@@ -80,19 +80,119 @@ public abstract class Game implements LevelObserver {
     }
 
     public void restart() {
-        synchronized (progressLock) {
-            stop();
-            Launcher.pacManUI.dispose();
-            new Launcher().launch();
+        if (pacManUI != null) {
+            Launcher.setVisible(false);
+        }
+        Launcher.dispose();
+        Launcher.setVisible(false);
+
+        /**Restart Map Basic**/
+        if (Launcher.getMap() == 0) {
+            if (Launcher.getTheme() == 1){
+                new Launcher().launch_theme1();
+            } else if (Launcher.getTheme() == 2) {
+                new Launcher().launch_theme2();
+            }else if (Launcher.getTheme() == 3) {
+                new Launcher().launch_theme3();
+            }else if (Launcher.getTheme() == 4) {
+                new Launcher().launch_theme4();
+            }else if (Launcher.getTheme() == 5) {
+                new Launcher().launch_theme5();
+            }
+            new MapSelector().setVisible(true);
         }
 
+
+        /**Restart Map 1**/
+        if (Launcher.getMap() == 1) {
+            if (Launcher.getTheme() == 1){
+                new Launcher().launch_theme1();
+            } else if (Launcher.getTheme() == 2) {
+                new Launcher().launch_theme2();
+            }else if (Launcher.getTheme() == 3) {
+                new Launcher().launch_theme3();
+            }else if (Launcher.getTheme() == 4) {
+                new Launcher().launch_theme4();
+            }else if (Launcher.getTheme() == 5) {
+                new Launcher().launch_theme5();
+            }
+
+            new MapSelector().setVisible(true);
+        }
+
+        /**Restart Map 2**/
+        if (Launcher.getMap() == 2) {
+            if (Launcher.getTheme() == 1){
+                new Launcher().launch_theme1();
+            } else if (Launcher.getTheme() == 2) {
+                new Launcher().launch_theme2();
+            }else if (Launcher.getTheme() == 3) {
+                new Launcher().launch_theme3();
+            }else if (Launcher.getTheme() == 4) {
+                new Launcher().launch_theme4();
+            }else if (Launcher.getTheme() == 5) {
+                new Launcher().launch_theme5();
+            }
+
+
+            new MapSelector().setVisible(true);
+        }
+
+        /**Restart Map 3**/
+        if (Launcher.getMap() == 3) {
+            if (Launcher.getTheme() == 1){
+                new Launcher().launch_theme1();
+            } else if (Launcher.getTheme() == 2) {
+                new Launcher().launch_theme2();
+            }else if (Launcher.getTheme() == 3) {
+                new Launcher().launch_theme3();
+            }else if (Launcher.getTheme() == 4) {
+                new Launcher().launch_theme4();
+            }else if (Launcher.getTheme() == 5) {
+                new Launcher().launch_theme5();
+            }
+
+            new MapSelector().setVisible(true);
+        }
+
+        /**Restart Map 4**/
+        if (Launcher.getMap() == 4) {
+            if (Launcher.getTheme() == 1){
+                new Launcher().launch_theme1();
+            } else if (Launcher.getTheme() == 2) {
+                new Launcher().launch_theme2();
+            }else if (Launcher.getTheme() == 3) {
+                new Launcher().launch_theme3();
+            }else if (Launcher.getTheme() == 4) {
+                new Launcher().launch_theme4();
+            }else if (Launcher.getTheme() == 5) {
+                new Launcher().launch_theme5();
+            }
+
+            new MapSelector().setVisible(true);
+        }
+        /**Restart Map 5**/
+        if (Launcher.getMap() == 5) {
+            if (Launcher.getTheme() == 1){
+                new Launcher().launch_theme1();
+            } else if (Launcher.getTheme() == 2) {
+                new Launcher().launch_theme2();
+            }else if (Launcher.getTheme() == 3) {
+                new Launcher().launch_theme3();
+            }else if (Launcher.getTheme() == 4) {
+                new Launcher().launch_theme4();
+            }else if (Launcher.getTheme() == 5) {
+                new Launcher().launch_theme5();
+            }
+
+            new MapSelector().setVisible(true);
+        }
     }
 
     public void home() {
-        synchronized (progressLock) {
-            stop();
-            Launcher.pacManUI.dispose();
-            new HomePage();
+       {
+           Launcher.dispose();
+           new HomePage().setVisible(true);
         }
     }
     public void exit() {
@@ -120,7 +220,7 @@ public abstract class Game implements LevelObserver {
     public abstract Level getLevel();
 
     /**
-     * Moves the specified player one square in the given direction.
+     * Moves the specified player one square in the given direction.a
      *
      * @param player
      *            The player to move.
@@ -139,12 +239,14 @@ public abstract class Game implements LevelObserver {
     @Override
     public void levelWon() {
         stop();
+        Launcher.dispose();
+        new GameWin();
     }
 
     @Override
     public void levelLost() {
         stop();
-        Launcher.pacManUI.dispose();
+        Launcher.dispose();
         new GameOver();
     }
 }
